@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.erasmus-alemania.org" xmlns:ue="http://www.erasmus.org" xmlns:al="http://www.erasmus-alemania.org"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1"
+    xmlns:ft="http://www.w3.org/2005/xpath-functions">
+    <xs:import namespace="http://www.erasmus.org" schemaLocation="erasmus.xsd"/>
+    
+    
+    <xs:element name="Grados" type="al:gradoAlemaniaT"/>
+    
+    <xs:complexType name="gradoAlemaniaT">
+        <xs:complexContent>
+            <xs:extension base="ue:gradoT">
+                <xs:sequence>
+                    <xs:element type="al:notaT" name="NotaMediaGrado"/>
+                    <xs:element type="al:asignaturasT" name="Asignaturas"/>                    
+                </xs:sequence>
+                <!--xs:assert test="al:NotaMediaGrado = (floor(sum(//al:Asignatura/al:NotaMedia) div count(//al:Asignatura/al:NotaMedia)*10) div 10)" / -->
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="asignaturasT">
+        <xs:sequence>
+            <xs:element type="al:asignaturaT" name="Asignatura" minOccurs="1" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="asignaturaT">
+        <xs:sequence>
+            <xs:element type="xs:string" name="Nombre"/>
+            <xs:element type="al:notaT" name="NotaMedia"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:simpleType name="notaT">
+        <xs:restriction base="xs:float">
+            <xs:maxInclusive value="6.0"/>
+            <xs:minInclusive value="1.0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="estudianteAlemanT">
+        <xs:complexContent>
+            <xs:extension base="ue:estudianteT">
+                <xs:sequence>
+                    <xs:element type="al:listaExperienciasTrabajadas" name="ExperienciasProfesionales"/>
+                </xs:sequence>
+                <xs:assert test="if (ue:Universidad/ue:Grados[ue:Grado]) 
+                        then (ue:Universidad/ue:Grados/@Curso &lt; 4) 
+                        else (if (ue:Universidad/ue:Grados[ue:Master]) 
+                        then (ue:Universidad/ue:Grados/@Curso &lt; 3) 
+                        else (if (ue:Universidad/ue:Grados[ue:Doctorado]) 
+                        then (ue:Universidad/ue:Grados/@Curso &lt; 6) 
+                        else (1=2)))"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="listaExperienciasTrabajadas">
+        <xs:sequence>
+            <xs:element type="al:experienciaProfesionalT" name="ExperienciaProfesional" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="experienciaProfesionalT">
+        <xs:sequence>
+            <xs:element type="xs:string" name="NombreEmpresa"/>
+            <xs:element type="xs:string" name="Puesto"/>
+            <xs:element type="xs:int" name="HorasTrabajadas"/>
+        </xs:sequence>
+        <xs:assert test="al:HorasTrabajadas &gt; 150"/>
+    </xs:complexType>
+    
+</xs:schema>

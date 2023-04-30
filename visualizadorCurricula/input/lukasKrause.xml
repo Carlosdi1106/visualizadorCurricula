@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Erasmus xmlns="http://www.erasmus.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:al="http://www.erasmus-alemania.org"
+    xsi:schemaLocation="http://www.erasmus.org erasmus.xsd http://www.erasmus-alemania.org alemania.xsd">
+
+    <Estudiante NumeroIdentificacion="12345" xsi:type="al:estudianteAlemanT">
+        <NombreCompleto>
+            <Nombre>Lukas</Nombre>
+            <PrimerApellido>Krause</PrimerApellido>
+        </NombreCompleto>
+        <FechaNacimiento>2001-06-11</FechaNacimiento>
+        <Universidad>
+            <NombreUni>Universidad Técnica de Múnich</NombreUni>
+            <Procedencia>
+                <Pais>Alemania</Pais>
+                <CodigoPostal>20000</CodigoPostal>
+                <Ciudad>Munich</Ciudad>
+            </Procedencia>
+            <Grados Curso="3" xsi:type="al:gradoAlemaniaT">
+                <Grado>Ingenieria Informatica</Grado>
+                <Facultad>Facultad de Informatica</Facultad>
+                <Campus>Biergartem Campus</Campus>
+                <al:NotaMediaGrado>4.4</al:NotaMediaGrado>
+                <al:Asignaturas>
+                    <al:Asignatura>
+                        <al:Nombre>Fundamentos de la informática</al:Nombre>
+                        <al:NotaMedia>4.0</al:NotaMedia>
+                    </al:Asignatura>
+                    <al:Asignatura>
+                        <al:Nombre>Programación I y II</al:Nombre>
+                        <al:NotaMedia>5.0</al:NotaMedia>
+                    </al:Asignatura>
+                    <al:Asignatura>
+                        <al:Nombre>Estructuras de datos y algoritmos</al:Nombre>
+                        <al:NotaMedia>5.6</al:NotaMedia>
+                    </al:Asignatura>
+                    <al:Asignatura>
+                        <al:Nombre>Fundamentos de la ingeniería de software</al:Nombre>
+                        <al:NotaMedia>6.0</al:NotaMedia>
+                    </al:Asignatura>
+                    <al:Asignatura>
+                        <al:Nombre>Sistemas operativos</al:Nombre>
+                        <al:NotaMedia>3.4</al:NotaMedia>
+                    </al:Asignatura>
+                    <al:Asignatura>
+                        <al:Nombre>Bases de datos</al:Nombre>
+                        <al:NotaMedia>3.0</al:NotaMedia>
+                    </al:Asignatura>
+                    <al:Asignatura>
+                        <al:Nombre>Redes de computadoras</al:Nombre>
+                        <al:NotaMedia>4.5</al:NotaMedia>
+                    </al:Asignatura>
+                    <al:Asignatura>
+                        <al:Nombre>Arquitectura de computadoras</al:Nombre>
+                        <al:NotaMedia>4.8</al:NotaMedia>
+                    </al:Asignatura>
+                    <al:Asignatura>
+                        <al:Nombre>Matemáticas para informática</al:Nombre>
+                        <al:NotaMedia>4.2</al:NotaMedia>
+                    </al:Asignatura>
+                    <al:Asignatura>
+                        <al:Nombre>Sistemas operativos</al:Nombre>
+                        <al:NotaMedia>4.3</al:NotaMedia>
+                    </al:Asignatura>
+                </al:Asignaturas>
+            </Grados>
+        </Universidad>
+        <DatosContacto>
+            <PrefijoTelefono>49</PrefijoTelefono>
+            <Telefono>987654321</Telefono>
+            <CorreoElectronico>correoaleman@alemania.aleman</CorreoElectronico>
+            <Direccion>
+                <Pais>Alemania</Pais>
+                <CodigoPostal>20001</CodigoPostal>
+                <Ciudad>Munich</Ciudad>
+                <NombreCalle>Biergarten am Chinesischer Turm</NombreCalle>
+                <NumeroPortal>2</NumeroPortal>
+                <Piso>3</Piso>
+                <Puerta>A</Puerta>
+            </Direccion>
+        </DatosContacto>
+        <CartaPresentacion>
+            <UniversidadDestino>Universidad del País Vasco</UniversidadDestino>
+            <PaisDestino>España</PaisDestino>
+        </CartaPresentacion>
+        <NivelIdiomas>
+            <Certificado Idioma="Castellano">B2</Certificado>
+            <Certificado Idioma="Ingles">B2</Certificado>
+        </NivelIdiomas>
+        <Asignaturas>
+            <Asignatura NombreAsignatura="Diseño de Videojuegos I">
+                <Cuatrimestre>Primero</Cuatrimestre>
+                <Creditos>6</Creditos>
+            </Asignatura>
+            <Asignatura NombreAsignatura="Calidad de Software">
+                <Cuatrimestre>Primero</Cuatrimestre>
+                <Creditos>6</Creditos>
+            </Asignatura>
+            <Asignatura NombreAsignatura="Desarrollo Industrial de Software">
+                <Cuatrimestre>Primero</Cuatrimestre>
+                <Creditos>6</Creditos>
+            </Asignatura>
+            <Asignatura NombreAsignatura="Diseño de Base de Datos">
+                <Cuatrimestre>Primero</Cuatrimestre>
+                <Creditos>6</Creditos>
+            </Asignatura>
+            <Asignatura NombreAsignatura="Diseño de Videojuegos II">
+                <Cuatrimestre>Segundo</Cuatrimestre>
+                <Creditos>6</Creditos>
+            </Asignatura>
+            <Asignatura NombreAsignatura="Gestion Avanzada de Informacion">
+                <Cuatrimestre>Segundo</Cuatrimestre>
+                <Creditos>6</Creditos>
+            </Asignatura>
+            <Asignatura NombreAsignatura="Sistemas Web">
+                <Cuatrimestre>Segundo</Cuatrimestre>
+                <Creditos>6</Creditos>
+            </Asignatura>
+            <Asignatura NombreAsignatura="Gestion de Proyectos">
+                <Cuatrimestre>Segundo</Cuatrimestre>
+                <Creditos>6</Creditos>
+            </Asignatura>
+        </Asignaturas>
+        <CuatrimestreDeEstancia>Anual</CuatrimestreDeEstancia>
+        <al:ExperienciasProfesionales>
+            <al:ExperienciaProfesional>
+                <al:NombreEmpresa>Audi</al:NombreEmpresa>
+                <al:Puesto>Programador Junior</al:Puesto>
+                <al:HorasTrabajadas>300</al:HorasTrabajadas>
+            </al:ExperienciaProfesional>
+            <al:ExperienciaProfesional>
+                <al:NombreEmpresa>PSI Software AG</al:NombreEmpresa>
+                <al:Puesto>Programador Junior</al:Puesto>
+                <al:HorasTrabajadas>279</al:HorasTrabajadas>
+            </al:ExperienciaProfesional>
+        </al:ExperienciasProfesionales>
+    </Estudiante>
+
+
+
+</Erasmus>

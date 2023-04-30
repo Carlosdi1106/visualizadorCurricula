@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:era="http://www.erasmus.org"
+    elementFormDefault="qualified" targetNamespace="http://www.erasmus.org"
+    xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1">
+
+    <xs:element name="Erasmus">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Estudiante" type="era:estudianteT"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    
+    
+
+    <xs:complexType name="estudianteT">
+        <xs:sequence>
+            <xs:element type="era:nombreT" name="NombreCompleto"/>
+            <xs:element type="xs:date" name="FechaNacimiento"/>
+            <xs:element type="era:universidadT" name="Universidad"/>
+            <xs:element type="era:datosContactoT" name="DatosContacto"/>
+            <xs:element type="era:cartaT" name="CartaPresentacion"/>
+            <xs:element type="era:nivelIdiomasT" name="NivelIdiomas"/>
+            <xs:element type="era:todasAsignaturasT" name="Asignaturas"/>
+            <xs:element type="era:cuatrimestreT" name="CuatrimestreDeEstancia"/>
+        </xs:sequence>
+        <xs:attribute type="xs:string" name="NumeroIdentificacion" use="required"/>
+        <!-- Assert que asegura que el estudiante sea mayor de edad -->
+
+        <!-- Assert que comprueba que la suma de creditos sea la correcta:
+            Si el alumno solo esta un cuatrimestre sus creditos deben sumar 30 exactamente
+            En cambio si va el año entero la suma de creditos deber estar entre 48 y 60-->
+        <xs:assert test="
+                if (.//era:CuatrimestreDeEstancia[text() = 'Anual']) then
+                    sum(.//era:Asignatura/era:Creditos) &lt; 61 and
+                    sum(.//era:Asignatura/era:Creditos) &gt; 47
+                else
+                    sum(.//era:Asignatura/era:Creditos) = 30"/>
+
+        <!-- Assert que comprueba que las asignaturas se imparten en mismo cuatrimestre que va el alumno
+        en caso de que vaya el año entero no lo comprueba-->
+        <xs:assert test="
+                every $cuatriAsignatura in (.//era:Asignaturas/era:Asignatura/era:Cuatrimestre)
+                    satisfies if (.//era:CuatrimestreDeEstancia[text() = 'Anual'])
+                    then
+                        1=1
+                    else
+                        $cuatriAsignatura = .//era:CuatrimestreDeEstancia"/>
+
+    </xs:complexType>
+
+
+    <xs:complexType name="nombreT">
+        <xs:sequence>
+            <xs:element type="xs:string" name="Nombre"/>
+            <xs:element type="xs:string" name="PrimerApellido"/>
+            <xs:element type="xs:string" name="SegundoApellido" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="universidadT">
+        <xs:sequence>
+            <xs:element type="xs:string" name="NombreUni"/>
+            <xs:element type="era:procedenciaT" name="Procedencia"/>
+            <xs:element type="era:gradoT" name="Grados"/>
+            <xs:any namespace="any" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="procedenciaT">
+        <xs:sequence>
+            <xs:element type="xs:string" name="Pais"/>
+            <xs:element type="xs:int" name="CodigoPostal"/>
+            <xs:element type="xs:string" name="Ciudad"/>
+            <xs:any namespace="any" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:complexType name="gradoT">
+        <xs:sequence>
+            <xs:choice minOccurs="1">
+                <xs:element type="xs:string" name="Grado"/>
+                <xs:element type="xs:string" name="Master"/>
+                <xs:element type="xs:string" name="Doctorado"/>
+            </xs:choice>
+            <xs:element type="xs:string" name="Facultad"/>
+            <xs:element type="xs:string" name="Campus"/>
+            <xs:any namespace="any" minOccurs="0"/>
+        </xs:sequence>
+
+        <xs:attribute type="xs:int" name="Curso" use="required"/>
+    </xs:complexType>
+
+    <xs:complexType name="datosContactoT">
+        <xs:sequence>
+            <xs:element type="xs:string" name="PrefijoTelefono"/>
+            <xs:element type="xs:string" name="Telefono"/>
+            <xs:element type="xs:string" name="CorreoElectronico"/>
+            <xs:element type="era:direccionT" name="Direccion"/>
+            <xs:any namespace="any" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="direccionT">
+        <xs:complexContent>
+            <xs:extension base="era:procedenciaT">
+                <xs:sequence>
+                    <xs:element type="xs:string" name="NombreCalle"/>
+                    <xs:element type="xs:int" name="NumeroPortal"/>
+                    <xs:element type="xs:string" name="Piso"/>
+                    <xs:element type="xs:string" name="Puerta"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType mixed="true" name="cartaT">
+        <xs:sequence>
+            <xs:element type="xs:string" name="UniversidadDestino"/>
+            <xs:element type="xs:string" name="PaisDestino"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="nivelIdiomasT">
+        <xs:sequence>
+            <xs:element type="era:nivelIdiomaT" name="Certificado" minOccurs="0"
+                maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="nivelIdiomaT">
+        <xs:simpleContent>
+            <xs:extension base="era:nivelCertificadoT">
+                <xs:attribute type="xs:string" name="Idioma" use="required"/>
+            </xs:extension>
+        </xs:simpleContent>
+    </xs:complexType>
+
+
+    <xs:simpleType name="nivelCertificadoT">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-C]{1}[1-2]{1}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="todasAsignaturasT">
+        <xs:sequence>
+            <xs:element name="Asignatura" type="era:asignaturaT" maxOccurs="15"/>
+        </xs:sequence>
+
+        <!--Assert que comprueba que los nombres de las asignaturas no se repiten,
+            para evitar que se haya apuntado dos veces a la misma asignatura-->
+        <xs:assert
+            test="count(.//era:Asignatura/@NombreAsignatura) = count(distinct-values(.//era:Asignatura/@NombreAsignatura))"
+        />
+    </xs:complexType>
+
+    <xs:complexType name="asignaturaT">
+        <xs:sequence>
+            <xs:element name="Cuatrimestre" type="era:cuatrimestreT"/>
+            <xs:element name="Creditos" type="era:creditosT"/>
+        </xs:sequence>
+        <xs:attribute name="NombreAsignatura" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:simpleType name="creditosT">
+        <xs:restriction base="xs:float">
+            <xs:minExclusive value="3"/>
+            <xs:maxInclusive value="12"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="cuatrimestreT">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Primero"/>
+            <xs:enumeration value="Segundo"/>
+            <xs:enumeration value="Anual"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+</xs:schema>
