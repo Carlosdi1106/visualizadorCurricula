@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<era:Erasmus xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:es="http://www.erasmus-espana.org" 
+    xmlns:era="http://www.erasmus.org"
+    xs:schemaLocation="http://www.erasmus-espana.org espana.xsd 
+    http://www.erasmus.org erasmus.xsd"> 
+     
+    <era:Estudiante NumeroIdentificacion="1112223334A" xs:type="es:estudianteEspanaT">
+        <era:NombreCompleto>
+            <era:Nombre>Victor</era:Nombre>
+            <era:PrimerApellido>Garcia</era:PrimerApellido>
+            <era:SegundoApellido>Perez</era:SegundoApellido>
+        </era:NombreCompleto>
+        <era:FechaNacimiento>2002-02-27</era:FechaNacimiento>
+        <era:Universidad xs:type="es:universidadEspanaT">
+            <era:NombreUni>UPV/EHU</era:NombreUni>
+            <era:Procedencia xs:type="es:procedenciaEspanaT">
+                <era:Pais>Espana</era:Pais>  
+                <era:CodigoPostal>20001</era:CodigoPostal>
+                <era:Ciudad>Donosti</era:Ciudad>
+                <es:ComunidadAutonoma>Pais Vasco</es:ComunidadAutonoma>
+                <es:Provincia>Gipuzkoa</es:Provincia>
+                <es:PersonaDeContacto>
+                    <era:PrefijoTelefono>34</era:PrefijoTelefono>
+                    <era:Telefono>111222111</era:Telefono>
+                    <era:CorreoElectronico>persona@contacto.es</era:CorreoElectronico>
+                    <era:Direccion>
+                        <era:Pais>Espana</era:Pais>
+                        <era:CodigoPostal>01002</era:CodigoPostal>
+                        <era:Ciudad>Vitora</era:Ciudad>
+                        <era:NombreCalle>Portal de Castilla</era:NombreCalle>
+                        <era:NumeroPortal>1</era:NumeroPortal>
+                        <era:Piso>1</era:Piso>
+                        <era:Puerta>Derecha</era:Puerta>
+                    </era:Direccion>
+                </es:PersonaDeContacto>
+            </era:Procedencia> 
+            <era:Grados Curso="3" xs:type="es:gradoEspanaT">
+                <era:Grado>Ingenieria Informatica</era:Grado>
+                <era:Facultad>Informatica</era:Facultad>
+                <era:Campus>Gipuzkoa</era:Campus>
+            </era:Grados>
+            <es:Coordinador>
+                <es:Nombre>Borja</es:Nombre>
+                <es:Apellido>Calvo</es:Apellido>
+                <es:Email>informatica.internacional@ikasle.ehu.es</es:Email>
+                <es:Telefono>111222333</es:Telefono>
+            </es:Coordinador>
+        </era:Universidad>
+        <era:DatosContacto>
+            <era:PrefijoTelefono>34</era:PrefijoTelefono>
+            <era:Telefono>111222333</era:Telefono>
+            <era:CorreoElectronico>victor@garcia.com</era:CorreoElectronico>
+            <era:Direccion>
+                <era:Pais>Espana</era:Pais>
+                <era:CodigoPostal>01010</era:CodigoPostal>
+                <era:Ciudad>Vitoria</era:Ciudad>
+                <era:NombreCalle>Portal de Castilla</era:NombreCalle>
+                <era:NumeroPortal>1</era:NumeroPortal>
+                <era:Piso>1ero</era:Piso>
+                <era:Puerta>Derecha</era:Puerta>
+            </era:Direccion>
+        </era:DatosContacto>
+        <era:CartaPresentacion>
+            I'm so pleased i can go to <era:UniversidadDestino>Tartu University</era:UniversidadDestino>
+            in the beautiful country of <era:PaisDestino>Estonia</era:PaisDestino>. 
+            Can't wait for the day i assist to your classes
+        </era:CartaPresentacion>
+        <era:NivelIdiomas>
+            <era:Certificado Idioma="Ingles">C1</era:Certificado>
+            <era:Certificado Idioma="Euskera">B2</era:Certificado>
+        </era:NivelIdiomas>
+        <era:Asignaturas>
+            <era:Asignatura NombreAsignatura="DBD">
+                <era:Cuatrimestre>Segundo</era:Cuatrimestre>
+                <era:Creditos>12</era:Creditos>
+            </era:Asignatura>
+            <era:Asignatura NombreAsignatura="MD">
+                <era:Cuatrimestre>Anual</era:Cuatrimestre>
+                <era:Creditos>12</era:Creditos>
+            </era:Asignatura>
+            <era:Asignatura NombreAsignatura="LCSI">
+                <era:Cuatrimestre>Segundo</era:Cuatrimestre>
+                <era:Creditos>12</era:Creditos>
+            </era:Asignatura>
+            <era:Asignatura NombreAsignatura="IO">
+                <era:Cuatrimestre>Primero</era:Cuatrimestre>
+                <era:Creditos>12</era:Creditos>
+            </era:Asignatura>
+        </era:Asignaturas>
+        <era:CuatrimestreDeEstancia>Anual</era:CuatrimestreDeEstancia>
+        <es:Beca TipoBeca="Privada">
+            <es:NombreBeca>BBVA becas erasmus Locuras</es:NombreBeca>
+            <es:InstitucionEmisora>BBVA</es:InstitucionEmisora>
+            <es:Importe>700</es:Importe>
+        </es:Beca>
+        <es:Beca TipoBeca="Estatal">
+            <es:NombreBeca>Gobierno vasco internacionalizacion</es:NombreBeca>
+            <es:InstitucionEmisora>Gobierno Vasco</es:InstitucionEmisora>
+            <es:Importe>700</es:Importe>
+        </es:Beca>
+    </era:Estudiante>
+</era:Erasmus>

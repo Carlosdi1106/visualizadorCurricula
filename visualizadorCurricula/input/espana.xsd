@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.erasmus-espana.org" 
+    xmlns:es="http://www.erasmus-espana.org"
+    xmlns:era="http://www.erasmus.org" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" 
+    vc:minVersion="1.1" elementFormDefault="qualified">
+
+    <xs:import namespace="http://www.erasmus.org" 
+        schemaLocation="erasmus.xsd"/>
+    
+    <xs:element name="EstudianteEspana">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="era:estudianteT" name="Estudiante"/>
+            </xs:sequence>          
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="estudianteEspanaT">
+        <xs:complexContent>
+            <xs:extension base="era:estudianteT">
+                <xs:sequence>
+                    <xs:element name="Beca" type="es:becasT" minOccurs="0" maxOccurs="5"/> 
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="gradoEspanaT">
+        <xs:complexContent>
+            <xs:extension base="era:gradoT">
+                <xs:assert test="@Curso &lt; 5"/>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="procedenciaEspanaT">
+        <xs:complexContent>
+            <xs:extension base="era:procedenciaT">
+                <xs:sequence>
+                    <xs:element name="ComunidadAutonoma" type="xs:string"/>
+                    <xs:element name="Provincia" type="xs:string"/>
+                    <xs:element name="PersonaDeContacto" type="era:datosContactoT" minOccurs="0"/>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    <xs:complexType name="universidadEspanaT">
+        <xs:complexContent>
+            <xs:extension base="era:universidadT">
+                <xs:sequence>
+                    <xs:element name="Coordinador" type="es:coordinadorErasmusT"/> 
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+    
+    
+    <xs:complexType name="coordinadorErasmusT">
+        <xs:sequence>
+            <xs:element name="Nombre" type="xs:string"/>
+            <xs:element name="Apellido" type="xs:string"/>
+            <xs:element name="Email" type="xs:string"/>
+            <xs:element name="Telefono" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="becasT">
+        <xs:sequence>
+            <xs:element name="NombreBeca" type="xs:string"/>
+            <xs:element name="InstitucionEmisora" type="xs:string" />
+            <xs:element name="Importe" type="xs:int"/>
+        </xs:sequence>
+        <xs:attribute name="TipoBeca" type="es:categoriasBecasT"/>
+    </xs:complexType>
+    
+     
+    <xs:simpleType name="categoriasBecasT">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Universitaria"/>
+            <xs:enumeration value="Estatal"/>
+            <xs:enumeration value="Privada"/>
+        </xs:restriction>
+    </xs:simpleType> 
+    
+    
+
+</xs:schema>

@@ -11,8 +11,6 @@
         </xs:complexType>
     </xs:element>
     
-    
-
     <xs:complexType name="estudianteT">
         <xs:sequence>
             <xs:element type="era:nombreT" name="NombreCompleto"/>
@@ -30,12 +28,12 @@
         <!-- Assert que comprueba que la suma de creditos sea la correcta:
             Si el alumno solo esta un cuatrimestre sus creditos deben sumar 30 exactamente
             En cambio si va el año entero la suma de creditos deber estar entre 48 y 60-->
-        <xs:assert test="
+        <xs:assert  test="
                 if (.//era:CuatrimestreDeEstancia[text() = 'Anual']) then
                     sum(.//era:Asignatura/era:Creditos) &lt; 61 and
                     sum(.//era:Asignatura/era:Creditos) &gt; 47
                 else
-                    sum(.//era:Asignatura/era:Creditos) = 30"/>
+                    sum(.//era:Asignatura/era:Creditos) = 30"> </xs:assert >
 
         <!-- Assert que comprueba que las asignaturas se imparten en mismo cuatrimestre que va el alumno
         en caso de que vaya el año entero no lo comprueba-->
